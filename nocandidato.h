@@ -1,18 +1,14 @@
 #ifndef NOCANDIDATO_H
 #define NOCANDIDATO_H
 
-#include<Candidato.h>
-#include <cstring>
-#include <fstream>
-#include <iostream>
-#include <sstream>
+#include <Candidato.h>
 
 class NoCandidato
 {
 public:
     Candidato* conteudo;
-    NoCandidato* head;
     NoCandidato* next;
+
     NoCandidato(Candidato* conteudo, NoCandidato *next);
     string toString();
 };

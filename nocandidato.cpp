@@ -7,11 +7,20 @@ NoCandidato::NoCandidato(Candidato* _conteudo, NoCandidato* _next){
 
 string NoCandidato::toString(){
     stringstream stream;
-    stream << conteudo->toString() << " -> " << next->conteudo->toString();
-    if(next->conteudo== NULL){
-        stream << "0";
+    NoCandidato* candidatoAtual;
+    candidatoAtual = new NoCandidato(conteudo,next);
+
+    while(candidatoAtual->next!= NULL){
+        stream << candidatoAtual->conteudo->toString() << " -> ";
+
+        candidatoAtual->conteudo = candidatoAtual->next->conteudo;
+        candidatoAtual->next = candidatoAtual->next->next;
+
     }
+    //Para quando a lista só tiver com 1 elemento
+    if(candidatoAtual->next == NULL && candidatoAtual->conteudo != NULL){
+        stream << candidatoAtual->conteudo->toString() << " -> ";
+    }
+    stream << "0";
     return stream.str();
-
-
 }
