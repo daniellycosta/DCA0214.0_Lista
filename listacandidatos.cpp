@@ -82,7 +82,7 @@ bool ListaCandidatos::remove(string nome, string sobrenome)
         }
 
         if(aux == head && aux->conteudo->igual(nome,sobrenome) ){ //Lista com + um elemento e o primeiro é o procurado
-            aux->next = head;
+            head = aux->next;
             delete aux;
             delete anterior;
             return true;
@@ -93,14 +93,12 @@ bool ListaCandidatos::remove(string nome, string sobrenome)
             return true;
         }
         else if(anterior==NULL && !(aux->conteudo->igual(nome,sobrenome))){ //só um elemento e ele não é o procurado
-            delete aux;
-            delete anterior;
             return false;
         }
         else{
             anterior->next = aux->next;
             delete aux;
-            delete anterior;
+            //delete anterior;
             return true;
         }
 
