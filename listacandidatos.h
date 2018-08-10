@@ -13,6 +13,7 @@ public:
     bool estaVazia();
     int tamanho();
     string toString();
+    bool remove(string nome, string sobrenome);
 };
 
 #endif // LISTACANDIDATOS_H

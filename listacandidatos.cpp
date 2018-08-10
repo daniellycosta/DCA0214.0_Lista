@@ -10,15 +10,15 @@ ListaCandidatos::ListaCandidatos(){
 }
 
 ListaCandidatos::ListaCandidatos(string nomeDoArquivo){ //Não está funcionando
+    head = NULL;
+
     ifstream fcin(nomeDoArquivo);
     string dados;
-    ListaCandidatos* novaLista = new ListaCandidatos();
 
     getline(fcin,dados);
     while(getline(fcin,dados)){
-      Candidato* novoCandidato = new Candidato(dados);
-      novaLista->adicioneComoHead(novoCandidato);
-
+        Candidato* novoCandidato = new Candidato(dados);
+        this->adicioneComoHead(novoCandidato);
     }
 
 }
@@ -37,7 +37,7 @@ int ListaCandidatos::tamanho(){
     int cont = 0;
 
     if(head != NULL){
-        aux = new NoCandidato(head->conteudo,head->next);
+        aux = head;
         while(aux->next != NULL){
             cont++;
             aux = aux->next;
@@ -63,3 +63,54 @@ string ListaCandidatos::toString(){
 
     return lista;
 }
+
+bool ListaCandidatos::remove(string nome, string sobrenome)
+{
+    NoCandidato* aux = head;
+    NoCandidato* anterior = NULL;
+    int cont = 0;
+
+    if(head != NULL){
+
+        while(aux->next != NULL && !(aux->conteudo->igual(nome,sobrenome))){
+            if(cont >=1){
+                anterior = aux;
+            }
+
+            aux = aux->next;
+            cont++;
+        }
+
+        if(aux == head && aux->conteudo->igual(nome,sobrenome) ){ //Lista com + um elemento e o primeiro é o procurado
+            aux->next = head;
+            delete aux;
+            delete anterior;
+            return true;
+        }else if(anterior==NULL && aux->conteudo->igual(nome,sobrenome)){ //só um elemento e ele é o procurado
+            head = NULL;
+            delete aux;
+            delete anterior;
+            return true;
+        }
+        else if(anterior==NULL && !(aux->conteudo->igual(nome,sobrenome))){ //só um elemento e ele não é o procurado
+            delete aux;
+            delete anterior;
+            return false;
+        }
+        else{
+            anterior->next = aux->next;
+            delete aux;
+            delete anterior;
+            return true;
+        }
+
+    } else {
+        delete aux;
+        delete anterior;
+        return false;
+    }
+
+
+}
+
+
