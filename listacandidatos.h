@@ -14,6 +14,7 @@ public:
     int tamanho();
     string toString();
     bool remove(string nome, string sobrenome);
+    void filtrarCandidatos(int nota);
 };
 
 #endif // LISTACANDIDATOS_H

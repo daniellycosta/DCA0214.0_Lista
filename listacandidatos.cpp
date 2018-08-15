@@ -1,4 +1,5 @@
 #include "listacandidatos.h"
+#include "candidato.h"
 #include <cstring>
 #include <fstream>
 #include <iostream>
@@ -116,18 +117,18 @@ void ListaCandidatos::filtrarCandidatos(int nota){//nao esta funcionando
     //Candidato *c;
 
     while(head!=NULL){
-        if(head->conteudo->nota >= nota){
-           // c = head->conteudo;
-            //adicioneComoHead(c);
+        if(head->conteudo->maiorigualnota(nota)){
+      //      c = head->conteudo;
+        //    adicioneComoHead(c);
             head = head->next;
 
         }else{
             remove(head->conteudo->nome,head->conteudo->sobrenome);
         }
-
-
     }
 
+
 }
+
 
 
