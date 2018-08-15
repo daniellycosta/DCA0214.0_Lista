@@ -9,7 +9,7 @@ ListaCandidatos::ListaCandidatos(){
     head = NULL;
 }
 
-ListaCandidatos::ListaCandidatos(string nomeDoArquivo){ //Não está funcionando
+ListaCandidatos::ListaCandidatos(string nomeDoArquivo){
     head = NULL;
 
     ifstream fcin(nomeDoArquivo);
@@ -108,6 +108,25 @@ bool ListaCandidatos::remove(string nome, string sobrenome)
         return false;
     }
 
+
+}
+
+void ListaCandidatos::filtrarCandidatos(int nota){//nao esta funcionando
+
+    //Candidato *c;
+
+    while(head!=NULL){
+        if(head->conteudo->nota >= nota){
+           // c = head->conteudo;
+            //adicioneComoHead(c);
+            head = head->next;
+
+        }else{
+            remove(head->conteudo->nome,head->conteudo->sobrenome);
+        }
+
+
+    }
 
 }
 
