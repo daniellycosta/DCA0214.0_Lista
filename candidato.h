@@ -30,10 +30,6 @@ class Candidato{
     if(sobrenome == s && nome == n) return true;
     else return false;
   }
-  bool maiorigualnota(int n){
-      if(nota >= n)  return true;
-      else return false;
-  }
 
 };
 #endif

@@ -5,19 +5,19 @@ using namespace std;
 
 int main(){
 
-  ListaCandidatos* lista1 = new ListaCandidatos("C:/Users/SALA DE AULA/Downloads/DCA0214-Pratica01-lista-master/candidatsCentre.txt");
+  ListaCandidatos* lista1 = new ListaCandidatos("F:/Estrutura de Dados/Pratica01_Listas/candidatsCentre.txt");
   cout << "lista de " << lista1->tamanho() << " candidatos: " << lista1->toString() << endl;
   cout << "filtragem com nota = 13" << endl;
   lista1->filtrarCandidatos(13);
   cout << "lista de " << lista1->tamanho() << " candidatos: " << lista1->toString() << endl << endl;
 
-   ListaCandidatos* lista2 = new ListaCandidatos("C:/Users/SALA DE AULA/Downloads/DCA0214-Pratica01-lista-master/candidatsBourgogne.txt");
+   ListaCandidatos* lista2 = new ListaCandidatos("F:/Estrutura de Dados/Pratica01_Listas/candidatsBourgogne.txt");
    cout << "lista de " << lista2->tamanho() << " candidatos: " << lista2->toString() << endl;
    cout << "filtragem com nota = 20" << endl;
   lista2->filtrarCandidatos(20);
   cout << "lista de " << lista2->tamanho() << " candidatos: " << lista2->toString() << endl << endl;
 
-   ListaCandidatos* lista3 = new ListaCandidatos("C:/Users/SALA DE AULA/Downloads/DCA0214-Pratica01-lista-master/candidatsLimousin.txt");
+   ListaCandidatos* lista3 = new ListaCandidatos("F:/Estrutura de Dados/Pratica01_Listas/candidatsLimousin.txt");
   cout << "lista de " << lista3->tamanho() << " candidatos: " << lista3->toString() << endl;
   cout << "filtragem com nota = 0" << endl;
   lista3->filtrarCandidatos(0);

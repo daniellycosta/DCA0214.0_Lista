@@ -74,20 +74,23 @@ bool ListaCandidatos::remove(string nome, string sobrenome)
     if(head != NULL){
 
         while(aux->next != NULL && !(aux->conteudo->igual(nome,sobrenome))){
-            if(cont >=1){
-                anterior = aux;
-            }
+//            if(cont >=1){
 
+//            }
+            anterior = aux;
             aux = aux->next;
             cont++;
         }
 
         if(aux == head && aux->conteudo->igual(nome,sobrenome) ){ //Lista com + um elemento e o primeiro é o procurado
+
             head = aux->next;
             delete aux;
             delete anterior;
             return true;
-        }else if(anterior==NULL && aux->conteudo->igual(nome,sobrenome)){ //só um elemento e ele é o procurado
+        }
+        else if(anterior==NULL && aux->conteudo->igual(nome,sobrenome)){ //só um elemento e ele é o procurado
+
             head = NULL;
             delete aux;
             delete anterior;
@@ -99,36 +102,55 @@ bool ListaCandidatos::remove(string nome, string sobrenome)
         else{
             anterior->next = aux->next;
             delete aux;
-            //delete anterior;
             return true;
         }
 
     } else {
-        delete aux;
-        delete anterior;
+//        delete aux;
+//        delete anterior;
         return false;
     }
 
 
 }
 
-void ListaCandidatos::filtrarCandidatos(int nota){//nao esta funcionando
 
-    //Candidato *c;
+void ListaCandidatos::filtrarCandidatos(int nota)
+{
+    if(this->estaVazia() == false){
+        NoCandidato *aux;
+        aux = head;
 
-    while(head!=NULL){
-        if(head->conteudo->maiorigualnota(nota)){
-      //      c = head->conteudo;
-        //    adicioneComoHead(c);
-            head = head->next;
+//        if (aux->next == NULL && aux->conteudo != NULL && aux->conteudo->nota < nota ){
+//            this->remove(aux->conteudo->nome, aux->conteudo->sobrenome);
 
-        }else{
-            remove(head->conteudo->nome,head->conteudo->sobrenome);
-        }
+//        } else {
+            while(aux != NULL){
+                if(aux->conteudo->nota < nota){
+                    NoCandidato *temp;
+                    temp = aux;
+                    aux = aux->next;
+                    this->remove(temp->conteudo->nome, temp->conteudo->sobrenome);
+                    //delete temp;
+                } else {
+                    aux = aux->next;
+                }
+            }
+
+//        }
     }
-
-
 }
 
+void ListaCandidatos::concatena(ListaCandidatos *l)
+{
+    NoCandidato *aux;
+    aux = head;
+    if(head != NULL){
+        while(aux->next!=NULL){
+            aux = aux->next;
+        }
+        aux->next = l->head;
+    }
 
+}
 
